@@ -11,9 +11,9 @@
     "StarmanMine142"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/structurevoidable",
-    "sources": "https://github.com/Vg34100/Minecraft-StructureVoidable",
-    "issues": "https://github.com/Vg34100/Minecraft-StructureVoidable/issues"
+    "homepage": "https://modrinth.com/project/structure-voidable-fork",
+    "sources": "https://github.com/StarmanMine142/structure-voidable",
+    "issues": "https://github.com/StarmanMine142/structure-voidable/issues"
   },
   "license": "MIT",
   "icon": "assets/structurevoidable/icon.png",
