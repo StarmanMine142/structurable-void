@@ -30,5 +30,3 @@ jobs:
           path: |
             fabric/build/libs/*.jar
             neoforge/build/libs/*.jar
-            !**/build/libs/*-dev.jar
-            !**/build/libs/*-sources.jar
