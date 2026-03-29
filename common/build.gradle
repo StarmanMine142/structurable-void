@@ -1,0 +1,27 @@
+architectury {
+    common(rootProject.enabled_platforms.split(','))
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
+    mappings loom.officialMojangMappings()
+
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+}
+
+processResources {
+    def props = [
+            "version": project.version,
+            "minecraft_version": rootProject.minecraft_version,
+            "architectury_api_version": rootProject.architectury_api_version
+    ]
+    inputs.properties props
+
+    filesMatching("architectury.common.json") {
+        expand props
+    }
+
+    filesMatching("structurevoidable.mixins.json") {
+        expand props
+    }
+}

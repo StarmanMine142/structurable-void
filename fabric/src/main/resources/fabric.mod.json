@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "structurevoidable",
+  "version": "${version}",
+  "name": "StructureVoidable",
+  "description": "Client side mod to make using the block Structure Void easier.",
+  "authors": [
+    "VgLevelUp"
+  ],
+  "contributors": [
+    "StarmanMine142"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/structurevoidable",
+    "sources": "https://github.com/Vg34100/Minecraft-StructureVoidable",
+    "issues": "https://github.com/Vg34100/Minecraft-StructureVoidable/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/structurevoidable/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.vg.structurevoidable.fabric.StructurevoidableFabric"
+    ],
+    "client": [
+      "net.vg.structurevoidable.fabric.client.StructurevoidableFabricClient"
+    ],
+    "modmenu": [
+      "net.vg.structurevoidable.fabric.modmenu.StructureVoidableModMenu"
+    ]
+  },
+  "mixins": [
+    "structurevoidable.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=${java_version}",
+    "architectury": ">=${architectury_api_version}",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
