@@ -3,29 +3,29 @@ loaderVersion = "[2,)"
 license = "MIT"
 
 [[mods]]
-modId = "structurevoidable"
+modId = "structurablevoid"
 version = "${version}"
-displayName = "StructureVoidable"
+displayName = "Structurable Void"
 authors = "VgLevelUp, StarmanMine142"
 description = '''
 Client side mod to make using the block Structure Void easier.
 '''
 
-[[dependencies.structurevoidable]]
+[[dependencies.structurablevoid]]
 modId = "neoforge"
 type = "required"
 versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.structurevoidable]]
+[[dependencies.structurablevoid]]
 modId = "minecraft"
 type = "required"
 versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.structurevoidable]]
+[[dependencies.structurablevoid]]
 modId = "architectury"
 type = "required"
 versionRange = "[${architectury_api_version},)"
@@ -33,4 +33,4 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "structurevoidable.mixins.json"
+config = "structurablevoid.mixins.json"

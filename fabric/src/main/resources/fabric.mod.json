@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "structurevoidable",
+  "id": "structurablevoid",
   "version": "${version}",
-  "name": "StructureVoidable",
+  "name": "Structurable Void",
   "description": "Client side mod to make using the block Structure Void easier.",
   "authors": [
     "VgLevelUp"
@@ -11,26 +11,26 @@
     "StarmanMine142"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/project/structure-voidable-fork",
-    "sources": "https://github.com/StarmanMine142/structure-voidable",
-    "issues": "https://github.com/StarmanMine142/structure-voidable/issues"
+    "homepage": "https://modrinth.com/project/structurable-void",
+    "sources": "https://github.com/StarmanMine142/structurable-void",
+    "issues": "https://github.com/StarmanMine142/structurable-void/issues"
   },
   "license": "MIT",
-  "icon": "assets/structurevoidable/icon.png",
+  "icon": "assets/structurablevoid/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.vg.structurevoidable.fabric.StructurevoidableFabric"
+      "net.vg.structurablevoid.fabric.StructurableVoidFabric"
     ],
     "client": [
-      "net.vg.structurevoidable.fabric.client.StructurevoidableFabricClient"
+      "net.vg.structurablevoid.fabric.client.StructurableVoidFabricClient"
     ],
     "modmenu": [
-      "net.vg.structurevoidable.fabric.modmenu.StructureVoidableModMenu"
+      "net.vg.structurablevoid.fabric.modmenu.StructurableVoidModMenu"
     ]
   },
   "mixins": [
-    "structurevoidable.mixins.json"
+    "structurablevoid.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.18.0",

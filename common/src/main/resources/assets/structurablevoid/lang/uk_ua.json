@@ -1,0 +1,54 @@
+{
+ "gui.reset": "Скинути",
+ "config.general.title": "Налаштування Structurable Void",
+ "config.server.title": "Серверні налаштування",
+ "config.client.title": "Клієнтські налаштування",
+
+ "config.barrier.behavior": "Поведінка бар'єрів",
+ "config.outline.always.visible": "Контур завжди видно",
+ "config.full.block.outline": "Контур повного блока",
+ "config.outline.size": "Розмір контуру",
+
+
+ "config.full.block.render": "Промальовувати повний блок",
+ "config.outline.color": "Колір контура",
+
+ "config.display.block": "Показувати як блок",
+ "config.block.type": "Тип блока",
+
+
+ "tooltip.barrier.behavior": "Структурна порожнеча буде мати таке саме відображення як і бар'єр (Усталено: «УВІМК.»)",
+ "tooltip.outline.always.visible": "У контурному варіанті структурну порожнечу завжди має бути видно. Обережно! Може викликати зависання (Усталено: «ВИМК.»)",
+ "tooltip.full.block.outline": "Контур, який можна розбити та розмістити, має бути повним блоком (Усталено: «УВІМК.»)",
+ "tooltip.outline.size": "Розмір контуру ламання та розміщення. (Усталено: «Малий»)",
+
+ "tooltip.full.block.render": "Видимий контур промальовування буде повним блоком. «Завжди видно» має бути ввімкнено (Усталено: «ВИМК.»)",
+ "tooltip.outline.color": "Показ кольору контуру (Усталено: «Усталено»)",
+
+ "tooltip.display.block": "Структурна порожнеча буде показана як мод. «Завжди видно» має бути ввімкнено (Усталено: «ВИМК.»)",
+ "tooltip.block.type": "Тип блока який відображатиметься якщо параметр «Показувати як блок» увімкнено (Усталено: «Камінь»)",
+
+
+ "outline.color.default": "Усталено",
+ "outline.color.void": "Структурна порожнеча",
+ "outline.color.barrier": "Бар'єр",
+
+ "block.type.stone": "Камінь",
+ "block.type.deepslate": "Глибосланець",
+ "block.type.dirt": "Ґрунт",
+ "block.type.netherrack": "Незерак",
+ "block.type.endstone": "Камінь Енду",
+
+ "outline.size.none": "Жоден",
+ "outline.size.small": "Малий",
+ "outline.size.medium": "Середній",
+ "outline.size.large": "Великий",
+
+ "key.toggle_outline_visible": "Перемикнути контур",
+ "key.cycle_outline_size": "Циклічний розмір контуру",
+ "key.cycle_block_type": "Циклічний тип блока",
+ "key.category.structurablevoid.structurablevoid": "Structurable Void",
+
+ "modmenu.descriptionTranslation.structurablevoid": "Полегшує використання структурної порожнечі.",
+ "fml.menu.mods.info.description.structurablevoid": "Полегшує використання структурної порожнечі."
+}

@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'structurevoidable'
+rootProject.name = 'structurablevoid'
 
 include 'common'
 include 'fabric'
