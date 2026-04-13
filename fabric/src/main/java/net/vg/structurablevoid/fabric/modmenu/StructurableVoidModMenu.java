@@ -5,7 +5,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.vg.structurablevoid.Constants;
 import net.vg.structurablevoid.client.gui.screen.option.MainOptionScreen;
 
-public class StructureVoidableModMenu implements ModMenuApi {
+public class StructurableVoidModMenu implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
