@@ -9,14 +9,14 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.vg.structurablevoid.StructurableVoidClient;
-import net.vg.structurablevoid.Structurevoidable;
+import net.vg.structurablevoid.StructurableVoid;
 import net.neoforged.fml.common.Mod;
 import net.vg.structurablevoid.client.gui.screen.option.MainOptionScreen;
 
-@Mod(Structurablevoid.MOD_ID)
+@Mod(StructurableVoid.MOD_ID)
 public final class StructurableVoidNeoForge {
-    public StructurablevoidNeoForge(IEventBus modEventBus) {
-        Structurablevoid.init();
+    public StructurableVoidNeoForge(IEventBus modEventBus) {
+        StructurableVoid.init();
 
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             modEventBus.addListener(this::clientSetup);
