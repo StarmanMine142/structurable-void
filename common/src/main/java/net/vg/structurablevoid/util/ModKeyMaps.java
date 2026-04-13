@@ -15,7 +15,7 @@ import java.util.List;
 public class ModKeyMaps {
 
     static KeyMapping.Category STRUCTURABLEVOID_CATEGORY = new KeyMapping.Category(
-            Identifier.fromNamespaceAndPath(Structurablevoid.MOD_ID, "structurablevoid")
+            Identifier.fromNamespaceAndPath(StructurableVoid.MOD_ID, "structurablevoid")
     );
 
     public static final KeyMapping CUSTOM_KEYMAPPING = new KeyMapping(
