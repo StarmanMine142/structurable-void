@@ -8,4 +8,4 @@ public final class StructurableVoidFabric implements ModInitializer {
     public void onInitialize() {
         StructurableVoid.init();
     }
-}V
+}
