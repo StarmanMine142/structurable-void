@@ -4,7 +4,7 @@ import net.vg.structurablevoid.block.entity.ModBlockEntities;
 import net.vg.structurablevoid.config.ModConfigs;
 import net.vg.structurablevoid.util.ModKeyMaps;
 
-public final class Structurevoidable {
+public final class StructurableVoid {
     public static final String MOD_ID = "structurablevoid";
 
     public static void init() {
