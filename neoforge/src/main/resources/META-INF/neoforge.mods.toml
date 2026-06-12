@@ -14,7 +14,7 @@ Client side mod to make using the block Structure Void easier.
 [[dependencies.structurablevoid]]
 modId = "neoforge"
 type = "required"
-versionRange = "[${neoforge_version},)"
+versionRange = "[${min_neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 

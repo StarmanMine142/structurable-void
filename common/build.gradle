@@ -1,12 +1,11 @@
 architectury {
-    common(rootProject.enabled_platforms.split(','))
+    common(enabled_platforms.split(','))
 }
 
 dependencies {
     minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-    mappings loom.officialMojangMappings()
 
-    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    implementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 }
 
 processResources {

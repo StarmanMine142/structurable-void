@@ -1,8 +1,6 @@
 {
   "gui.reset": "Reset",
   "config.general.title": "Structurable Void Settings",
-  "config.server.title": "Server Settings",
-  "config.client.title": "Client Settings",
 
   "config.barrier.behavior": "Barrier Behavior",
   "config.outline.always.visible": "Outline Always Visible",

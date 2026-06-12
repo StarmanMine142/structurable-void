@@ -11,7 +11,7 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.vg.structurablevoid.StructurableVoidClient;
 import net.vg.structurablevoid.StructurableVoid;
 import net.neoforged.fml.common.Mod;
-import net.vg.structurablevoid.client.gui.screen.option.MainOptionScreen;
+import net.vg.structurablevoid.client.gui.screen.option.OptionScreen;
 
 @Mod(StructurableVoid.MOD_ID)
 public final class StructurableVoidNeoForge {
@@ -25,7 +25,7 @@ public final class StructurableVoidNeoForge {
         ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> new IConfigScreenFactory() {
             @Override
             public Screen createScreen(ModContainer modContainer, Screen arg) {
-                return new MainOptionScreen(arg);
+                return new OptionScreen(arg);
             }
         });
     }

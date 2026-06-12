@@ -14,7 +14,7 @@ public class Constants {
 
 
     public static String fetchModVersion() {
-        String DEFAULT_VERSION = "1.0.3";
+        String DEFAULT_VERSION = "1.0.4";
 
         if (Platform.isModLoaded(MOD_ID)) {
             return Platform.getMod(MOD_ID).getVersion();

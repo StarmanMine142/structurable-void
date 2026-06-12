@@ -7,12 +7,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.ShapeRenderer;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.BlockModelRenderState;
+import net.minecraft.client.renderer.block.BlockModelResolver;
+import net.minecraft.client.renderer.block.model.BlockDisplayContext;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -23,8 +25,11 @@ import net.vg.structurablevoid.config.ModConfigs;
 import org.jspecify.annotations.Nullable;
 
 public class StructureVoidBlockEntityRenderer implements BlockEntityRenderer<StructureVoidBlockEntity, StructureVoidRenderState> {
+    private final BlockModelRenderState renderState = new BlockModelRenderState();
+    private final BlockModelResolver blockModelResolver;
 
     public StructureVoidBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+        this.blockModelResolver = context.blockModelResolver();
     }
 
     @Override
@@ -62,11 +67,14 @@ public class StructureVoidBlockEntityRenderer implements BlockEntityRenderer<Str
             default -> Blocks.STONE.defaultBlockState();
         };
 
-        BlockRenderDispatcher dispatcher = Minecraft.getInstance().getBlockRenderer();
+        Minecraft mc = Minecraft.getInstance();
+        BlockModel model = mc.getModelManager().getBlockModelSet().get(blockState);
 
-        if (collector instanceof MultiBufferSource bufferSource) {
-            dispatcher.renderSingleBlock(blockState, poseStack, bufferSource, 15728880, OverlayTexture.NO_OVERLAY);
-        }
+        this.renderState.clear();
+        this.blockModelResolver.update(this.renderState, blockState, BlockDisplayContext.create());
+        model.update(this.renderState, blockState, BlockDisplayContext.create(), 42L);
+
+        this.renderState.submit(poseStack, collector, 15728880, 655360, 0);
     }
 
     private void renderInvisibleBlocks(PoseStack poseStack, SubmitNodeCollector collector, StructureVoidRenderState state) {

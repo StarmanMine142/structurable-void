@@ -1,5 +1,5 @@
 plugins {
-    id "com.gradleup.shadow" version "9.2.0"
+    id "com.gradleup.shadow" version "9.4.2"
 }
 
 architectury {
@@ -26,13 +26,13 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraft:minecraft:${rootProject.minecraft_version}"
-    mappings loom.officialMojangMappings()
-
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
-    modImplementation "dev.architectury:architectury-neoforge:${rootProject.architectury_api_version}"
 
-    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    minecraft "net.minecraft:minecraft:${rootProject.minecraft_version}"
+
+    implementation "dev.architectury:architectury-neoforge:${rootProject.architectury_api_version}"
+
+    common(project(path: ":common")) { transitive false }
     shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
 }
 
@@ -41,6 +41,7 @@ processResources {
             'version': project.version,
             'minecraft_version': rootProject.minecraft_version,
             'neoforge_version': rootProject.neoforge_version,
+            'min_neoforge_version': rootProject.min_neoforge_version,
             'java_version': rootProject.java_version,
             'architectury_api_version': rootProject.architectury_api_version
     ]
@@ -52,15 +53,15 @@ processResources {
 }
 
 shadowJar {
+    dependsOn jar
+    mainSpec.sourcePaths.clear()
+    from(zipTree(jar.archiveFile))
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier = "dev-shadow"
+    archiveClassifier = null
+    zip64 = true
 }
 
-remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-    archiveClassifier = null
-}
+assemble.dependsOn shadowJar
 
 jar {
     archiveClassifier = "dev"

@@ -7,17 +7,15 @@ import net.minecraft.client.OptionInstance;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.network.chat.Component;
+import net.vg.structurablevoid.Constants;
 import net.vg.structurablevoid.config.ModConfigs;
 
-public class ClientOptionScreen extends OptionsSubScreen {
+public class OptionScreen extends OptionsSubScreen{
+    private static final Component TITLE_TEXT = Component.translatable("config.general.title");
 
-    public ClientOptionScreen(Screen parent) {
-        super(parent, Minecraft.getInstance().options, Component.translatable("config.client.title"));
-    }
-
-    @Override
-    protected void init() {
-        super.init();
+    public OptionScreen(Screen parent) {
+        super(parent, Minecraft.getInstance().options, TITLE_TEXT);
+        Constants.LOGGER.debug("Initializing MainConfigScreen with title: {}", TITLE_TEXT.getString());
     }
 
     @Override
@@ -106,8 +104,11 @@ public class ClientOptionScreen extends OptionsSubScreen {
                 blockType
         };
 
-        assert this.list != null;
-        this.list.addSmall(options);
+        if (this.list != null) {
+            this.list.addSmall(options);
+        } else {
+            Constants.LOGGER.error("Options list is null! Cannot add options.");
+        }
     }
 
     @Override

@@ -1,5 +1,5 @@
 plugins {
-    id "com.gradleup.shadow" version "9.2.0"
+    id "com.gradleup.shadow" version "9.4.2"
 }
 
 architectury {
@@ -25,12 +25,11 @@ configurations {
 
 dependencies {
     minecraft "net.minecraft:minecraft:${rootProject.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
-    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_api_version}"
-    modApi "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    implementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    api "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    api "dev.architectury:architectury-fabric:${rootProject.architectury_api_version}"
+    api "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
+    common(project(path: ":common")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
@@ -38,6 +37,7 @@ processResources {
     def props = [
             "version": project.version,
             "minecraft_version": rootProject.minecraft_version,
+            "min_minecraft_version": rootProject.min_minecraft_version,
             "fabric_loader_version": rootProject.fabric_loader_version,
             "architectury_api_version": rootProject.architectury_api_version,
             "java_version": rootProject.java_version
@@ -50,15 +50,15 @@ processResources {
 }
 
 shadowJar {
+    dependsOn jar
+    mainSpec.sourcePaths.clear()
+    from(zipTree(jar.archiveFile))
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier = "dev-shadow"
+    archiveClassifier = null
+    zip64 = true
 }
 
-remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-    archiveClassifier = null
-}
+assemble.dependsOn shadowJar
 
 jar {
     archiveClassifier = "dev"
