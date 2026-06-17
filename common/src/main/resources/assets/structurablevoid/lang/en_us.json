@@ -20,11 +20,11 @@
   "tooltip.full.block.outline": "If the breakable and placeable outline should be a full block. (Default: True)",
   "tooltip.outline.size": "The size of the breakable and placeable outline. (Default: 'small')",
 
-  "tooltip.full.block.render": "If the visible outline render should be a full block. Only works with the always visible option on. (Default: False)",
+  "tooltip.full.block.render": "If the visible outline render should be a full block. Only works with the 'Outline Always Visible' option on. (Default: False)",
   "tooltip.outline.color": "The color of the outline render. (Default:'default')",
 
-  "tooltip.display.block": "If the structure void should display as some minecraft mod. Always visible must be on. (Default: False)",
-  "tooltip.block.type": "The type of block to display as. Works when Display Block option is on. (Default: Stone)",
+  "tooltip.display.block": "If the structure void should display as some minecraft mod. 'Outline Always visible' must be on. (Default: False)",
+  "tooltip.block.type": "The type of block to display as. Works when 'Display as Block' option is on. (Default: Stone)",
 
 
   "outline.color.default": "Default",

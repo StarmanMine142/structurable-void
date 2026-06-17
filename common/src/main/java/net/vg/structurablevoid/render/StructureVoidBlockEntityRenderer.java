@@ -1,12 +1,8 @@
 package net.vg.structurablevoid.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.ShapeRenderer;
 import net.minecraft.client.renderer.block.BlockModelRenderState;
 import net.minecraft.client.renderer.block.BlockModelResolver;
 import net.minecraft.client.renderer.block.model.BlockDisplayContext;
@@ -14,6 +10,7 @@ import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -67,32 +64,24 @@ public class StructureVoidBlockEntityRenderer implements BlockEntityRenderer<Str
             default -> Blocks.STONE.defaultBlockState();
         };
 
-        Minecraft mc = Minecraft.getInstance();
-        BlockModel model = mc.getModelManager().getBlockModelSet().get(blockState);
-
+        BlockModel model = Minecraft.getInstance().getModelManager().getBlockModelSet().get(blockState);
         this.renderState.clear();
         this.blockModelResolver.update(this.renderState, blockState, BlockDisplayContext.create());
         model.update(this.renderState, blockState, BlockDisplayContext.create(), 42L);
-
         this.renderState.submit(poseStack, collector, 15728880, 655360, 0);
     }
 
     private void renderInvisibleBlocks(PoseStack poseStack, SubmitNodeCollector collector, StructureVoidRenderState state) {
-        if (collector instanceof MultiBufferSource bufferSource) {
-            VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderTypes.lines());
+        double min = state.fullBlock ? 0.0 : 0.45;
+        double max = state.fullBlock ? 1.0 : 0.55;
+        int color = switch (state.outlineColor) {
+            case "void" -> 0xFF24B2C7;
+            case "barrier" -> 0xFFFF0000;
+            default -> 0xFFFFC0C0;
+        };
 
-            double min = state.fullBlock ? 0.0 : 0.45;
-            double max = state.fullBlock ? 1.0 : 0.55;
-
-            int color = switch (state.outlineColor) {
-                case "void" -> 0xFF24B2C7;
-                case "barrier" -> 0xFFFF0000;
-                default -> 0xFFFFC0C0;
-            };
-
-            VoxelShape shape = Shapes.box(min, min, min, max, max, max);
-            ShapeRenderer.renderShape(poseStack, vertexConsumer, shape, 0.0, 0.0, 0.0, color, 1.0F);
-        }
+        VoxelShape shape = Shapes.box(min, min, min, max, max, max);
+        collector.submitShapeOutline(poseStack, shape, RenderTypes.lines(), color, 1.0F, false);
     }
 
     @Override

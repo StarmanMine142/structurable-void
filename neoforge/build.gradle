@@ -7,6 +7,13 @@ architectury {
     neoForge()
 }
 
+repositories {
+    maven {
+        name = 'NeoForged'
+        url = 'https://maven.neoforged.net/releases'
+    }
+}
+
 configurations {
     common {
         canBeResolved = true
@@ -18,20 +25,10 @@ configurations {
     developmentNeoForge.extendsFrom common
 }
 
-repositories {
-    maven {
-        name = 'NeoForged'
-        url = 'https://maven.neoforged.net/releases'
-    }
-}
-
 dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
-
     minecraft "net.minecraft:minecraft:${rootProject.minecraft_version}"
-
     implementation "dev.architectury:architectury-neoforge:${rootProject.architectury_api_version}"
-
     common(project(path: ":common")) { transitive false }
     shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
 }

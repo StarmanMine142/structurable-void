@@ -114,6 +114,6 @@ public class OptionScreen extends OptionsSubScreen{
     @Override
     public void onClose() {
         ModConfigs.saveConfigs();
-        this.minecraft.setScreen(this.lastScreen);
+        this.minecraft.setScreenAndShow(this.lastScreen);
     }
 }

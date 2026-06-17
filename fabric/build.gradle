@@ -8,8 +8,10 @@ architectury {
 }
 
 repositories {
-    maven { url "https://maven.terraformersmc.com/releases/" }
-    mavenCentral()
+    maven {
+        name = 'Terraformers'
+        url = 'https://maven.terraformersmc.com/releases/'
+    }
 }
 
 configurations {
@@ -34,7 +36,7 @@ dependencies {
 }
 
 processResources {
-    def props = [
+    def resourceTargets = [
             "version": project.version,
             "minecraft_version": rootProject.minecraft_version,
             "min_minecraft_version": rootProject.min_minecraft_version,
@@ -42,10 +44,10 @@ processResources {
             "architectury_api_version": rootProject.architectury_api_version,
             "java_version": rootProject.java_version
     ]
-    inputs.properties props
+    inputs.properties resourceTargets
 
     filesMatching("fabric.mod.json") {
-        expand props
+        expand resourceTargets
     }
 }
 
