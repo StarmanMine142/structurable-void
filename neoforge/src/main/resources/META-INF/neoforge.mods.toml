@@ -4,6 +4,7 @@ license = "MIT"
 
 [[mods]]
 modId = "structurablevoid"
+logoFile = "assets/structurablevoid/icon.png"
 version = "${version}"
 displayName = "Structurable Void"
 authors = "VgLevelUp, StarmanMine142"
